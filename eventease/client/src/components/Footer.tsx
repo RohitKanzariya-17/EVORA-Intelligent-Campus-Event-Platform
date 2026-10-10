@@ -86,9 +86,9 @@ export const Footer: React.FC = () => {
               Password for all: <code className="bg-white px-1.5 py-0.5 rounded border border-[#E2E8F0] font-mono text-[#0F172A]">Password123!</code>
             </p>
             <div className="text-[11px] space-y-1 font-mono text-[#334155]">
-              <div><strong className="text-[#2563EB]">Admin:</strong> admin@eventease.edu</div>
-              <div><strong className="text-[#2563EB]">Organizer:</strong> sarah.organizer@eventease.edu</div>
-              <div><strong className="text-[#2563EB]">Student:</strong> alex.student@eventease.edu</div>
+              <div><strong className="text-[#2563EB]">Admin:</strong> admin@evora.edu</div>
+              <div><strong className="text-[#2563EB]">Organizer:</strong> sarah.organizer@evora.edu</div>
+              <div><strong className="text-[#2563EB]">Student:</strong> alex.student@evora.edu</div>
             </div>
           </div>
         </div>

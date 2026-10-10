@@ -57,7 +57,12 @@ export const Login: React.FC = () => {
         }
       }
     } catch (error: any) {
-      toast.error(error.response?.data?.message || 'Invalid email or password.');
+      const message =
+        error.response?.data?.message ||
+        (!error.response
+          ? 'Unable to reach backend server. Please verify the server is running.'
+          : 'Invalid email or password.');
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -66,13 +71,13 @@ export const Login: React.FC = () => {
   // Quick Demo account fill for judges / testers
   const fillDemoAccount = (role: 'student' | 'organizer' | 'admin') => {
     if (role === 'admin') {
-      setValue('email', 'admin@eventease.edu');
+      setValue('email', 'admin@evora.edu');
       setValue('password', 'Password123!');
     } else if (role === 'organizer') {
-      setValue('email', 'sarah.organizer@eventease.edu');
+      setValue('email', 'sarah.organizer@evora.edu');
       setValue('password', 'Password123!');
     } else {
-      setValue('email', 'alex.student@eventease.edu');
+      setValue('email', 'alex.student@evora.edu');
       setValue('password', 'Password123!');
     }
   };
@@ -137,7 +142,7 @@ export const Login: React.FC = () => {
                 <input
                   type="email"
                   {...register('email')}
-                  placeholder="e.g. alex.student@eventease.edu"
+                  placeholder="e.g. alex.student@evora.edu"
                   className="w-full pl-10 pr-4 py-2.5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-sm text-[#0F172A] placeholder-[#94A3B8] focus:outline-hidden focus:bg-white focus:border-[#2563EB] focus:ring-3 focus:ring-[#2563EB]/10 transition"
                 />
               </div>

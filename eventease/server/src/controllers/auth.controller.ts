@@ -67,7 +67,15 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
   try {
     const { email, password } = loginSchema.parse(req.body);
 
-    const user = await User.findOne({ email: email.toLowerCase() }).select('+passwordHash');
+    const normalizedEmail = email.toLowerCase().trim();
+    const alternateEmail = normalizedEmail.endsWith('@evora.edu')
+      ? normalizedEmail.replace('@evora.edu', '@eventease.edu')
+      : normalizedEmail.endsWith('@eventease.edu')
+      ? normalizedEmail.replace('@eventease.edu', '@evora.edu')
+      : null;
+
+    const emailQuery = alternateEmail ? { $in: [normalizedEmail, alternateEmail] } : normalizedEmail;
+    const user = await User.findOne({ email: emailQuery }).select('+passwordHash');
     if (!user) {
       res.status(401).json({
         success: false,
